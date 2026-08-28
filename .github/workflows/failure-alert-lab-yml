@@ -1,0 +1,16 @@
+name: Failure Alert Lab
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Simulate test failure
+        run: exit 1
+
+      - name: Failure notification
+        if: failure()
+        run: echo "ALERT - The test job failed"
